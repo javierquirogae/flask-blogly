@@ -4,15 +4,19 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ user.first_name }}  {{ user.last_name }}</title>
+        <title>{{ user.fn() }}</title>
     </head>
     <body>
-        <h1>{{ user.first_name }}  {{ user.last_name }}</h1>
+        <h1>{{ user.fn() }}</h1>
         <a href="/">Go back to list</a><br>
-        <img src="{{ user.image_url }}" alt="{{ user.first_name }}  {{ user.last_name }}" height="300">
+        <img src="{{ user.image_url }}" alt="{{ user.fn() }}" height="300">
         
         <form action="/{{user.id}}/delete"method="POST">
             <button type="submit" >DELETE THIS USER</button>
+        </form>
+
+        <form action="/{{user.id}}/edit_user">
+            <button type="submit" >EDIT THIS USER</button>
         </form>
        
     </body>

@@ -36,6 +36,9 @@ def delete_user(user_id):
     return redirect('/')
 
 
+
+
+
 @app.route('/form')
 def show_form():
     return render_template('form.html')
@@ -52,3 +55,25 @@ def create_user():
     db.session.commit()
 
     return redirect(f'/{new_user.id}')
+
+
+@app.route("/<int:user_id>/edit_user")
+def show_edit_form(user_id):
+    """show edit form"""
+    user = User.query.get_or_404(user_id)
+   
+    return render_template("edit.html", user=user)
+
+
+@app.route('/<int:user_id>/edit_user', methods=["POST"])
+def edit_user(user_id):
+    user = User.query.get_or_404(user_id)
+
+    user.first_name = request.form["first_name"]
+    user.last_last = request.form["last_name"]
+    user.image_url = request.form["image_url"]
+
+    db.session.add(user)
+    db.session.commit()
+
+    return redirect(f'/{user.id}')

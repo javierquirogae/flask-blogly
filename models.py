@@ -24,4 +24,7 @@ class User(db.Model):
 
     image_url = db.Column(db.String(500))
 
+    def fn(self):
+        return f"{self.first_name} {self.last_name}"
+
    
