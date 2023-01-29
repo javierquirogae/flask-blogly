@@ -13,6 +13,9 @@
             <li><a href="/{{ user.id }}">{{ user.first_name }}  {{ user.last_name }}</a></li>
             {% endfor %}
         </ul>
-        <a href="/form">ADD USER</a>
+      
+        <form action="/form">
+            <button type="submit" >ADD USER</button>
+        </form>
     </body>
 </html>

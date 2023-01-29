@@ -11,8 +11,9 @@
         <a href="/">Go back to list</a><br>
         <img src="{{ user.image_url }}" alt="{{ user.first_name }}  {{ user.last_name }}" height="300">
         
-        
-        
-        
+        <form action="/{{user.id}}/delete"method="POST">
+            <button type="submit" >DELETE THIS USER</button>
+        </form>
+       
     </body>
 </html>
