@@ -1,7 +1,7 @@
-"""Seed file to make sample data for pets db."""
+"""Seed file to make sample data for users db."""
 
 from models import User, db
-from app import app
+
 
 # Create all tables
 db.drop_all()
@@ -14,7 +14,7 @@ User.query.delete()
 Agent = User(
     first_name='Agent', 
     last_name='Smith',
-    image_url="https://static.wikia.nocookie.net/matrix/images/4/4d/Agent-smith-the-matrix-movie-hd-wallpaper-2880x1800-4710.png/revision/latest?cb=20140504013834")
+    image_url="https://upload.wikimedia.org/wikipedia/en/1/1f/Agent_Smith_%28The_Matrix_series_character%29.jpg")
 Joseph = User(
     first_name='Joseph', 
     last_name='Smith',

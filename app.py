@@ -17,5 +17,31 @@ print('connect_db')
 
 
 @app.route('/')
-def home_page():
-    return render_template('home.html')
+def list_users():
+    users = User.query.all()
+    return render_template('list.html', users=users)
+
+
+@app.route("/<int:user_id>")
+def show_user(user_id):
+    """Show details about a single pet"""
+    user = User.query.get_or_404(user_id)
+    return render_template("details.html", user=user)
+
+
+@app.route('/form')
+def show_form():
+    return render_template('form.html')
+
+
+@app.route('/form', methods=["POST"])
+def create_user():
+    first = request.form["first_name"]
+    last = request.form["last_name"]
+    url = request.form["image_url"]
+   
+    new_user  = User(first_name=first, last_name=last, image_url=url)
+    db.session.add(new_user)
+    db.session.commit()
+
+    return redirect(f'/{new_user.id}')
